@@ -1,0 +1,53 @@
+<section class="page-header">
+  <div>
+    <p class="section-kicker">Community Concerns</p>
+    <h1>Concern Management</h1>
+  </div>
+</section>
+
+<div class="toolbar">
+  <input type="search" [(ngModel)]="searchTerm" placeholder="Search by resident or category" />
+  <select [(ngModel)]="selectedCategory">
+    <option *ngFor="let category of categoryOptions" [value]="category">{{ category }}</option>
+  </select>
+  <select [(ngModel)]="selectedPurok">
+    <option *ngFor="let purok of purokOptions" [value]="purok">{{ purok }}</option>
+  </select>
+  <select [(ngModel)]="selectedStatus">
+    <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+  </select>
+</div>
+
+<div class="table-card">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Resident</th>
+        <th>Category</th>
+        <th>Purok</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let concern of filteredConcerns">
+        <td>{{ concern.id }}</td>
+        <td>{{ concern.residentName }}</td>
+        <td>{{ concern.category }}</td>
+        <td>{{ concern.purok }}</td>
+        <td>{{ concern.dateSubmitted }}</td>
+        <td>
+          <span class="status-badge" [class.submitted]="concern.status === 'Submitted'" [class.review]="concern.status === 'Under Review'" [class.processing]="concern.status === 'Processing'" [class.resolved]="concern.status === 'Resolved'" [class.rejected]="concern.status === 'Rejected'">
+            {{ concern.status }}
+          </span>
+        </td>
+        <td class="actions-cell">
+          <button class="small-btn" type="button">View</button>
+          <button class="small-btn" type="button">Update</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

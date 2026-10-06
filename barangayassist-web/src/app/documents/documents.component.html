@@ -1,0 +1,50 @@
+<section class="page-header">
+  <div>
+    <p class="section-kicker">Document Requests</p>
+    <h1>Request Management</h1>
+  </div>
+</section>
+
+<div class="toolbar">
+  <input type="search" [(ngModel)]="searchTerm" placeholder="Search by resident" />
+  <select [(ngModel)]="selectedType">
+    <option *ngFor="let type of typeOptions" [value]="type">{{ type }}</option>
+  </select>
+  <select [(ngModel)]="selectedStatus">
+    <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+  </select>
+</div>
+
+<div class="table-card">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Resident</th>
+        <th>Purok</th>
+        <th>Document</th>
+        <th>Purpose</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let request of filteredRequests">
+        <td>{{ request.id }}</td>
+        <td>{{ request.residentName }}</td>
+        <td>{{ request.purok }}</td>
+        <td>{{ request.documentType }}</td>
+        <td>{{ request.purpose }}</td>
+        <td>
+          <span class="status-badge" [class.pending]="request.status === 'Pending'" [class.processing]="request.status === 'Processing'" [class.ready]="request.status === 'Ready for Pickup'" [class.completed]="request.status === 'Completed'" [class.rejected]="request.status === 'Rejected'">
+            {{ request.status }}
+          </span>
+        </td>
+        <td class="actions-cell">
+          <button class="small-btn" type="button">View</button>
+          <button class="small-btn" type="button">Update</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

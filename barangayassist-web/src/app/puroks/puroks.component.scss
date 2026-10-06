@@ -1,0 +1,128 @@
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.section-kicker {
+  margin: 0 0 6px;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: clamp(1.7rem, 3vw, 2.2rem);
+  color: #0f172a;
+}
+
+.primary-btn {
+  border: 0;
+  border-radius: 6px;
+  background: #176f74;
+  padding: 12px 18px;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.add-form {
+  display: grid;
+  grid-template-columns: minmax(170px, 0.8fr) minmax(220px, 1.4fr) auto;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 18px;
+  box-shadow: 0 5px 16px rgba(15, 23, 42, 0.035);
+}
+
+.add-form input {
+  min-width: 0;
+  min-height: 42px;
+  border: 1px solid #dbe5ef;
+  border-radius: 5px;
+  padding: 12px 14px;
+  color: #122132;
+}
+
+.purok-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: 14px;
+}
+
+.purok-card {
+  min-width: 0;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-top: 3px solid #176f74;
+  border-radius: 8px;
+  padding: 18px;
+  box-shadow: 0 5px 16px rgba(15, 23, 42, 0.035);
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.card-top h3 {
+  margin: 0;
+  color: #122132;
+  font-size: 1.02rem;
+}
+
+.pill {
+  background: #e7f3f1;
+  color: #176f74;
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.purok-card p {
+  color: #475569;
+  margin: 0 0 18px;
+  line-height: 1.6;
+}
+
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  color: #64748b;
+  font-size: 0.8rem;
+}
+
+.card-meta button {
+  border: 1px solid #d5e0e2;
+  background: #f5f9f8;
+  color: #176f74;
+  border-radius: 5px;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+@media (max-width: 680px) {
+  .page-header {
+    align-items: flex-start;
+  }
+
+  .add-form {
+    grid-template-columns: 1fr;
+  }
+}

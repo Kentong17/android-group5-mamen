@@ -1,0 +1,58 @@
+<div class="login-shell">
+  <section class="visual-panel" aria-label="BarangayAssist personnel portal">
+    <p class="visual-welcome">Welcome<br>Back</p>
+    <div class="brand-lockup">
+      <div class="brand-mark" aria-hidden="true">BA</div>
+      <div class="brand-copy">
+        <span class="brand-name">BarangayAssist</span>
+        <span class="brand-role">Authorized Personnel</span>
+      </div>
+    </div>
+  </section>
+
+  <main class="login-panel">
+    <section class="form-card">
+      <header class="login-heading">
+        <p class="eyebrow">BarangayAssist Personnel Portal</p>
+        <h1>Admin Login</h1>
+        <p class="subtitle">Access the portal to manage residents, concerns, and barangay services.</p>
+      </header>
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+        <div class="field-group">
+          <label for="email">Email</label>
+          <input id="email" type="email" formControlName="email" placeholder="Enter your email" autocomplete="username" />
+        </div>
+
+        <div class="field-group">
+          <label for="password">Password</label>
+          <div class="password-wrap">
+            <input id="password" [type]="showPassword ? 'text' : 'password'" formControlName="password" placeholder="Enter your password" autocomplete="current-password" />
+            <button type="button" class="toggle-password" (click)="showPassword = !showPassword">
+              {{ showPassword ? 'Hide' : 'Show' }}
+            </button>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label class="checkbox-wrap">
+            <input type="checkbox" formControlName="remember" />
+            <span>Remember me</span>
+          </label>
+          <a routerLink="/login">Forgot password?</a>
+        </div>
+
+        <div class="error-box" *ngIf="errorMessage" role="alert">
+          {{ errorMessage }}
+        </div>
+
+        <button class="primary-btn" type="submit">Login</button>
+      </form>
+
+      <div class="sample-box">
+        <p>Demo access</p>
+        <span>admin&#64;barangayassist.local <span aria-hidden="true">·</span> admin123</span>
+      </div>
+    </section>
+  </main>
+</div>

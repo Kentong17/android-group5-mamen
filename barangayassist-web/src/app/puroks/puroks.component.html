@@ -1,0 +1,27 @@
+<section class="page-header">
+  <div>
+    <p class="section-kicker">Purok Management</p>
+    <h1>Purok Overview</h1>
+  </div>
+  <button class="primary-btn" type="button" (click)="showForm = !showForm">{{ showForm ? 'Close' : 'Add Purok' }}</button>
+</section>
+
+<div class="add-form" *ngIf="showForm">
+  <input placeholder="Purok name" [(ngModel)]="newPurok.name" />
+  <input placeholder="Description" [(ngModel)]="newPurok.description" />
+  <button type="button" class="primary-btn" (click)="savePurok()">Save Purok</button>
+</div>
+
+<div class="purok-grid">
+  <article class="purok-card" *ngFor="let purok of puroks">
+    <div class="card-top">
+      <h3>{{ purok.name }}</h3>
+      <span class="pill">{{ purok.residents }} residents</span>
+    </div>
+    <p>{{ purok.description }}</p>
+    <div class="card-meta">
+      <span>ID: {{ purok.id }}</span>
+      <button type="button">View Residents</button>
+    </div>
+  </article>
+</div>

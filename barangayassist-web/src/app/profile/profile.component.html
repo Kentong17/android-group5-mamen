@@ -1,0 +1,27 @@
+<section class="page-header">
+  <div>
+    <p class="section-kicker">Profile</p>
+    <h1>Personnel Profile</h1>
+  </div>
+</section>
+
+<div class="profile-layout">
+  <section class="profile-card">
+    <div class="avatar-wrap">
+      <div class="avatar">AD</div>
+    </div>
+    <div class="profile-body">
+      <h2>{{ user.name }}</h2>
+      <p class="role">{{ user.role }}</p>
+      <ul>
+        <li><span>Email</span><strong>{{ user.email }}</strong></li>
+        <li><span>Contact Number</span><strong>0917-123-4567</strong></li>
+        <li><span>Position</span><strong>Barangay Administrator</strong></li>
+      </ul>
+      <div class="actions">
+        <button class="primary-btn" type="button">Edit Profile</button>
+        <button class="secondary-btn" type="button">Change Password</button>
+      </div>
+    </div>
+  </section>
+</div>

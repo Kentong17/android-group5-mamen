@@ -1,0 +1,154 @@
+.page-header {
+  margin-bottom: 20px;
+}
+
+.section-kicker {
+  margin: 0 0 6px;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: clamp(1.7rem, 3vw, 2.2rem);
+  color: #0f172a;
+}
+
+.profile-layout {
+  display: grid;
+  justify-items: center;
+}
+
+.profile-card {
+  display: grid;
+  grid-template-columns: 210px minmax(0, 1fr);
+  align-items: stretch;
+  gap: 22px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 5px 16px rgba(15, 23, 42, 0.035);
+  max-width: 900px;
+  width: 100%;
+}
+
+.avatar-wrap {
+  display: grid;
+  place-items: center;
+  min-height: 270px;
+  border-radius: 6px;
+  background: #edf3f4;
+}
+
+.avatar {
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  background: #176f74;
+  color: white;
+  display: grid;
+  place-items: center;
+  font-size: 1.8rem;
+  font-weight: 800;
+  box-shadow: 0 0 0 8px rgba(23, 111, 116, 0.1);
+}
+
+.profile-body {
+  min-width: 0;
+  align-self: center;
+  padding: 20px 24px 20px 0;
+}
+
+.profile-body h2 {
+  margin: 0 0 6px;
+  font-size: clamp(1.45rem, 2.5vw, 1.85rem);
+  color: #0f172a;
+}
+
+.role {
+  display: inline-block;
+  margin: 0 0 18px;
+  padding: 5px 8px;
+  border-radius: 4px;
+  background: #e7f3f1;
+  color: #176f74;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.profile-body ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+  display: grid;
+}
+
+.profile-body li {
+  display: grid;
+  grid-template-columns: minmax(110px, 0.45fr) minmax(0, 1fr);
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid #edf2f7;
+  color: #334155;
+  font-size: 0.86rem;
+}
+
+.profile-body li span {
+  color: #64748b;
+}
+
+.profile-body strong {
+  color: #0f172a;
+  overflow-wrap: anywhere;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.primary-btn,
+.secondary-btn {
+  min-height: 40px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.primary-btn {
+  background: #176f74;
+  color: white;
+}
+
+.secondary-btn {
+  border-color: #d5e0e2;
+  background: #f5f8f8;
+  color: #26383d;
+}
+
+@media (max-width: 640px) {
+  .profile-card {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .avatar-wrap {
+    min-height: 150px;
+  }
+
+  .profile-body {
+    padding: 8px 10px 12px;
+  }
+
+  .profile-body li {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}

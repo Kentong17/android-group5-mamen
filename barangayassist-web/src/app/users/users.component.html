@@ -1,0 +1,37 @@
+<section class="page-header">
+  <div>
+    <p class="section-kicker">Authorized Users</p>
+    <h1>User Access Management</h1>
+  </div>
+  <button class="primary-btn" type="button">Add User</button>
+</section>
+
+<div class="table-card">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Status</th>
+        <th>Date Created</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.role }}</td>
+        <td>
+          <span class="status-badge" [class.active]="user.status === 'Active'" [class.inactive]="user.status !== 'Active'">{{ user.status }}</span>
+        </td>
+        <td>{{ user.dateCreated }}</td>
+        <td class="actions-cell">
+          <button class="small-btn" type="button">Edit</button>
+          <button class="small-btn" type="button" (click)="toggleStatus(user)">{{ user.status === 'Active' ? 'Deactivate' : 'Activate' }}</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

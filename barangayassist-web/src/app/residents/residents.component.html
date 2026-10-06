@@ -1,0 +1,53 @@
+<section class="page-header">
+  <div>
+    <p class="section-kicker">Residents</p>
+    <h1>Resident Management</h1>
+  </div>
+  <button class="primary-btn" type="button">Add Resident</button>
+</section>
+
+<div class="toolbar">
+  <input type="search" [(ngModel)]="searchTerm" placeholder="Search by name or resident ID" />
+  <select [(ngModel)]="selectedPurok">
+    <option *ngFor="let purok of purokOptions" [value]="purok">{{ purok }}</option>
+  </select>
+</div>
+
+<div class="table-card">
+  <table>
+    <thead>
+      <tr>
+        <th>Resident ID</th>
+        <th>Full Name</th>
+        <th>Address</th>
+        <th>Purok</th>
+        <th>Contact Number</th>
+        <th>Email</th>
+        <th>Account Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let resident of filteredResidents">
+        <td>{{ resident.id }}</td>
+        <td>{{ resident.fullName }}</td>
+        <td>{{ resident.address }}</td>
+        <td>{{ resident.purok }}</td>
+        <td>{{ resident.contactNumber }}</td>
+        <td>{{ resident.email }}</td>
+        <td>
+          <span class="status-badge" [class.active]="resident.accountStatus === 'Active'" [class.inactive]="resident.accountStatus !== 'Active'">
+            {{ resident.accountStatus }}
+          </span>
+        </td>
+        <td class="actions-cell">
+          <button class="small-btn" type="button">View</button>
+          <button class="small-btn" type="button">Edit</button>
+          <button class="small-btn warn" type="button" (click)="toggleStatus(resident)">
+            {{ resident.accountStatus === 'Active' ? 'Deactivate' : 'Activate' }}
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

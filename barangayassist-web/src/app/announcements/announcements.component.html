@@ -1,0 +1,50 @@
+<section class="page-header">
+  <div>
+    <p class="section-kicker">Announcements</p>
+    <h1>Barangay Announcements</h1>
+  </div>
+  <button class="primary-btn" type="button" (click)="openCreateForm()">Create Announcement</button>
+</section>
+
+<div class="announcement-form" *ngIf="showForm">
+  <input placeholder="Title" [(ngModel)]="form.title" />
+  <textarea placeholder="Description" [(ngModel)]="form.description"></textarea>
+  <div class="form-grid">
+    <input type="date" [(ngModel)]="form.date" />
+    <input type="time" [(ngModel)]="form.time" />
+    <input placeholder="Location" [(ngModel)]="form.location" />
+  </div>
+  <select [(ngModel)]="form.status">
+    <option value="Draft">Draft</option>
+    <option value="Published">Published</option>
+    <option value="Unpublished">Unpublished</option>
+  </select>
+  <div class="form-actions">
+    <button class="primary-btn" type="button" (click)="saveAnnouncement()">{{ editingId ? 'Save Changes' : 'Save Draft' }}</button>
+    <button class="secondary-btn" type="button" (click)="showForm = false">Cancel</button>
+  </div>
+</div>
+
+<div class="announcement-grid">
+  <article class="announcement-card" *ngFor="let announcement of announcements">
+    <img [src]="announcement.image" [alt]="announcement.title" />
+    <div class="card-body">
+      <div class="card-top">
+        <h3>{{ announcement.title }}</h3>
+        <span class="status-badge" [class.published]="announcement.status === 'Published'" [class.draft]="announcement.status === 'Draft'" [class.unpublished]="announcement.status === 'Unpublished'">{{ announcement.status }}</span>
+      </div>
+      <p>{{ announcement.description }}</p>
+      <ul>
+        <li><strong>Date:</strong> {{ announcement.date }}</li>
+        <li><strong>Time:</strong> {{ announcement.time }}</li>
+        <li><strong>Location:</strong> {{ announcement.location }}</li>
+      </ul>
+      <div class="card-actions">
+        <button type="button" (click)="openEditForm(announcement)">Edit</button>
+        <button type="button" (click)="publishAnnouncement(announcement.id)">Publish</button>
+        <button type="button" (click)="unpublishAnnouncement(announcement.id)">Unpublish</button>
+        <button type="button" class="danger" (click)="deleteAnnouncement(announcement.id)">Delete</button>
+      </div>
+    </div>
+  </article>
+</div>
