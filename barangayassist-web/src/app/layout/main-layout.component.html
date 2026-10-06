@@ -1,0 +1,149 @@
+<div class="app-shell" [class.compact]="preferences().compactLayout">
+  <aside class="sidebar" [class.collapsed]="sidebarCollapsed">
+    <div class="brand-wrap">
+      <div class="brand-mark">BA</div>
+      <div class="brand-text" *ngIf="!sidebarCollapsed">
+        <span class="brand-name">BarangayAssist</span>
+        <small>Personnel</small>
+      </div>
+    </div>
+
+    <nav class="nav-menu">
+      <a
+        *ngFor="let item of navItems"
+        [routerLink]="item.route"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: item.route === '/dashboard' }"
+        class="nav-item"
+      >
+        <span class="icon">{{ item.icon }}</span>
+        <span class="label" *ngIf="!sidebarCollapsed">{{ item.label }}</span>
+      </a>
+    </nav>
+  </aside>
+
+  <div class="main-panel">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="collapse-btn" (click)="sidebarCollapsed = !sidebarCollapsed" aria-label="Toggle sidebar">
+          ☰
+        </button>
+        <div class="page-heading">
+          <p class="topbar-label">Operations center</p>
+          <div class="title-row">
+            <h2>Barangay Administration</h2>
+            <span class="status-pill"><span class="status-dot"></span> Live</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <button class="header-btn primary-action" type="button">+ New Report</button>
+        <div class="notification-wrap">
+          <button
+            class="header-btn notification-trigger"
+            type="button"
+            aria-label="Notifications"
+            [attr.aria-expanded]="showNotifications"
+            [disabled]="!preferences().notifications.inApp"
+            (click)="toggleNotifications()"
+          >
+            <span aria-hidden="true">&#128276;</span>
+            <span class="notification-count" *ngIf="preferences().notifications.inApp && unreadNotificationCount">
+              {{ unreadNotificationCount }}
+            </span>
+          </button>
+          <section class="notification-panel" *ngIf="showNotifications" aria-label="Notifications panel">
+            <div class="notification-heading">
+              <div>
+                <h3>Notifications</h3>
+                <p>{{ unreadNotificationCount }} unread</p>
+              </div>
+              <button
+                class="text-action"
+                type="button"
+                (click)="markAllNotificationsRead()"
+                [disabled]="!unreadNotificationCount"
+              >
+                Mark all read
+              </button>
+            </div>
+            <div class="notification-list" *ngIf="notifications.length; else emptyNotifications">
+              <article class="notification-row" *ngFor="let notification of notifications" [class.unread]="!notification.read">
+                <button class="notification-content" type="button" (click)="markNotificationRead(notification.id)">
+                  <strong>{{ notification.title }}</strong>
+                  <span>{{ notification.detail }}</span>
+                  <small>{{ notification.time }}</small>
+                </button>
+                <button
+                  class="dismiss-notification"
+                  type="button"
+                  [attr.aria-label]="'Dismiss ' + notification.title"
+                  (click)="dismissNotification(notification.id)"
+                >
+                  &times;
+                </button>
+              </article>
+            </div>
+            <ng-template #emptyNotifications>
+              <p class="empty-notifications">You are all caught up.</p>
+            </ng-template>
+          </section>
+        </div>
+        <div class="profile-menu-wrap">
+          <button
+            class="profile-chip"
+            type="button"
+            aria-label="Account menu"
+            aria-haspopup="menu"
+            [attr.aria-expanded]="showProfileMenu"
+            (click)="toggleProfileMenu()"
+          >
+            <div class="avatar">AD</div>
+            <div class="profile-meta">
+              <strong>{{ user.name }}</strong>
+              <span>{{ user.role }}</span>
+            </div>
+            <span class="profile-chevron" aria-hidden="true">⌄</span>
+          </button>
+          <div class="profile-menu" *ngIf="showProfileMenu" role="menu" aria-label="Account actions">
+            <div class="profile-menu-heading">
+              <strong>{{ user.name }}</strong>
+              <span>{{ user.email }}</span>
+            </div>
+            <a routerLink="/profile" role="menuitem" (click)="showProfileMenu = false">View profile</a>
+            <button class="profile-menu-signout" type="button" role="menuitem" (click)="requestSignOut()">Sign out</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="content-area">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>
+
+<div
+  class="signout-backdrop"
+  *ngIf="showSignOutConfirmation"
+  (click)="cancelSignOut()"
+  (keydown.escape)="cancelSignOut()"
+>
+  <section
+    class="signout-dialog"
+    role="alertdialog"
+    aria-modal="true"
+    aria-labelledby="signout-title"
+    aria-describedby="signout-description"
+    (click)="$event.stopPropagation()"
+  >
+    <div class="signout-icon" aria-hidden="true">!</div>
+    <h2 id="signout-title">Sign out?</h2>
+    <p id="signout-description">Are you sure you want to sign out of BarangayAssist?</p>
+    <div class="signout-actions">
+      <button class="signout-cancel" type="button" (click)="cancelSignOut()" autofocus>No</button>
+      <button class="signout-confirm" type="button" (click)="confirmSignOut()">Yes, sign out</button>
+    </div>
+  </section>
+</div>

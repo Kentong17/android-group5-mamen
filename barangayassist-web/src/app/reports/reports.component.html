@@ -1,0 +1,70 @@
+<section class="page-header">
+  <div>
+    <p class="section-kicker">Reports & Statistics</p>
+    <h1>Administrative Overview</h1>
+  </div>
+</section>
+
+<div class="stats-grid">
+  <article class="stat-card">
+    <h3>Resident Statistics</h3>
+    <ul>
+      <li><span>Total residents</span><strong>{{ residents.length }}</strong></li>
+      <li><span>Purok 1</span><strong>58</strong></li>
+      <li><span>Purok 2</span><strong>62</strong></li>
+      <li><span>Purok 3</span><strong>71</strong></li>
+      <li><span>Purok 4</span><strong>59</strong></li>
+    </ul>
+  </article>
+
+  <article class="stat-card">
+    <h3>Concern Statistics</h3>
+    <ul>
+      <li><span>Total concerns</span><strong>{{ concernSummary.total }}</strong></li>
+      <li><span>Submitted</span><strong>{{ concernSummary.submitted }}</strong></li>
+      <li><span>Under Review</span><strong>{{ concernSummary.underReview }}</strong></li>
+      <li><span>Processing</span><strong>{{ concernSummary.processing }}</strong></li>
+      <li><span>Resolved</span><strong>{{ concernSummary.resolved }}</strong></li>
+      <li><span>Rejected</span><strong>{{ concernSummary.rejected }}</strong></li>
+    </ul>
+  </article>
+
+  <article class="stat-card">
+    <h3>Document Statistics</h3>
+    <ul>
+      <li><span>Total requests</span><strong>{{ requestSummary.total }}</strong></li>
+      <li><span>Pending</span><strong>{{ requestSummary.pending }}</strong></li>
+      <li><span>Processing</span><strong>{{ requestSummary.processing }}</strong></li>
+      <li><span>Ready for Pickup</span><strong>{{ requestSummary.ready }}</strong></li>
+      <li><span>Completed</span><strong>{{ requestSummary.completed }}</strong></li>
+      <li><span>Rejected</span><strong>{{ requestSummary.rejected }}</strong></li>
+    </ul>
+  </article>
+
+  <article class="stat-card">
+    <h3>Announcement Statistics</h3>
+    <ul>
+      <li><span>Total announcements</span><strong>{{ announcementSummary.total }}</strong></li>
+      <li><span>Published</span><strong>{{ announcementSummary.published }}</strong></li>
+      <li><span>Drafts</span><strong>{{ announcementSummary.drafts }}</strong></li>
+    </ul>
+  </article>
+</div>
+
+<div class="chart-panel">
+  <h3>Service Performance</h3>
+  <div class="chart-stack">
+    <div class="chart-item">
+      <span>Resident registration</span>
+      <div class="track"><div class="fill blue" style="width: 78%;"></div></div>
+    </div>
+    <div class="chart-item">
+      <span>Concern resolution</span>
+      <div class="track"><div class="fill green" style="width: 62%;"></div></div>
+    </div>
+    <div class="chart-item">
+      <span>Document processing</span>
+      <div class="track"><div class="fill orange" style="width: 58%;"></div></div>
+    </div>
+  </div>
+</div>

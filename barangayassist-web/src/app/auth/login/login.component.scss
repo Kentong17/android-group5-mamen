@@ -1,0 +1,328 @@
+.login-shell {
+  display: grid;
+  min-height: 100vh;
+  min-height: 100svh;
+  grid-template-columns: minmax(0, 1.08fr) minmax(380px, 0.92fr);
+  overflow: hidden;
+  background: #1d293b;
+}
+
+.visual-panel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-height: 100vh;
+  min-height: 100svh;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: visible;
+  padding: clamp(32px, 5vw, 76px);
+  background:
+    linear-gradient(145deg, rgba(10, 19, 34, 0.12), rgba(10, 19, 34, 0.22)),
+    url('/Image/barangay-hall.jpg') center / cover no-repeat;
+  color: #fff;
+}
+
+.visual-panel::before,
+.visual-panel::after {
+  position: absolute;
+  top: -12%;
+  height: 124%;
+  border-radius: 50%;
+  content: '';
+  pointer-events: none;
+}
+
+.visual-panel::before {
+  right: -12%;
+  width: 35%;
+  background: rgba(174, 182, 199, 0.76);
+  transform: rotate(12deg);
+}
+
+.visual-panel::after {
+  right: -22%;
+  width: 34%;
+  background: rgba(22, 34, 57, 0.84);
+  transform: rotate(-10deg);
+}
+
+.visual-welcome,
+.brand-lockup {
+  position: relative;
+  z-index: 1;
+}
+
+.visual-welcome {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.45;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.42);
+}
+
+.brand-lockup {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.52);
+}
+
+.brand-mark {
+  display: grid;
+  width: 58px;
+  height: 58px;
+  flex: 0 0 58px;
+  place-items: center;
+  border: 2px solid rgba(255, 255, 255, 0.86);
+  border-radius: 50%;
+  background: #1769c2;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.brand-copy {
+  display: grid;
+  gap: 4px;
+}
+
+.brand-name {
+  font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+  font-weight: 700;
+}
+
+.brand-role {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.96rem;
+}
+
+.login-panel {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  min-width: 0;
+  min-height: 100vh;
+  min-height: 100svh;
+  place-items: center;
+  padding: 48px clamp(32px, 6vw, 88px);
+  background: #1d293b;
+  color: #f8fafc;
+}
+
+.form-card {
+  width: min(100%, 390px);
+}
+
+.login-heading {
+  margin-bottom: 28px;
+}
+
+.eyebrow {
+  margin: 0 0 9px;
+  color: #aebbd0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.login-heading h1 {
+  margin: 0;
+  color: #fff;
+  font-size: 1.9rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  margin: 10px 0 0;
+  color: #c2ccda;
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+label {
+  color: #dce3ec;
+  font-size: 0.74rem;
+  font-weight: 600;
+}
+
+.field-group input {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 42px;
+  padding: 10px 12px;
+  border: 1px solid #77849a;
+  border-radius: 5px;
+  background: rgba(12, 20, 34, 0.24);
+  color: #fff;
+  font: inherit;
+  font-size: 0.82rem;
+}
+
+.field-group input::placeholder {
+  color: #a7b2c2;
+}
+
+.field-group input:focus {
+  outline: 2px solid #8db9ff;
+  outline-offset: 2px;
+  border-color: #b8d2ff;
+}
+
+.password-wrap {
+  position: relative;
+}
+
+.password-wrap input {
+  padding-right: 60px;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  border: 0;
+  background: transparent;
+  color: #c9d9f5;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: -4px;
+}
+
+.checkbox-wrap {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #cbd5e1;
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.checkbox-wrap input {
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  accent-color: #82aaf0;
+}
+
+.form-row a {
+  color: #cbd5e1;
+  font-size: 0.68rem;
+  text-decoration: none;
+}
+
+.error-box {
+  padding: 10px 12px;
+  border: 1px solid rgba(248, 113, 113, 0.55);
+  border-radius: 5px;
+  background: rgba(127, 29, 29, 0.28);
+  color: #fecaca;
+  font-size: 0.78rem;
+}
+
+.primary-btn {
+  min-height: 42px;
+  border: 0;
+  border-radius: 4px;
+  background: #f8fafc;
+  color: #182235;
+  font-size: 0.78rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.sample-box {
+  display: grid;
+  gap: 5px;
+  margin-top: 24px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(203, 213, 225, 0.25);
+  color: #c2ccda;
+  font-size: 0.7rem;
+}
+
+.sample-box p {
+  margin: 0;
+  color: #95a3b7;
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.sample-box span {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 760px) {
+  .login-shell {
+    grid-template-columns: 1fr;
+    overflow: auto;
+  }
+
+  .visual-panel {
+    min-height: 240px;
+    min-height: 32svh;
+    padding: 26px;
+    overflow: hidden;
+    background-position: center 44%;
+  }
+
+  .visual-panel::before,
+  .visual-panel::after {
+    display: none;
+  }
+
+  .brand-lockup {
+    gap: 12px;
+  }
+
+  .brand-mark {
+    width: 46px;
+    height: 46px;
+    flex-basis: 46px;
+    font-size: 0.85rem;
+  }
+
+  .login-panel {
+    min-height: 0;
+    padding: 38px 26px 44px;
+  }
+}
+
+@media (max-width: 420px) {
+  .visual-panel {
+    min-height: 210px;
+    padding: 22px;
+  }
+
+  .login-panel {
+    padding-inline: 22px;
+  }
+
+  .form-row {
+    align-items: flex-start;
+  }
+}

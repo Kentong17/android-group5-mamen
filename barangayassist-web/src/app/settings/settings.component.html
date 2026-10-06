@@ -1,0 +1,94 @@
+<section class="page-header">
+  <div>
+    <p class="section-kicker">Settings</p>
+    <h1>Preferences</h1>
+    <p class="page-description">Changes are saved in this browser and apply to this demo account.</p>
+  </div>
+</section>
+
+<div class="settings-layout">
+  <section class="settings-section workspace-section">
+    <div class="section-heading">
+      <div>
+        <h2>Workspace</h2>
+        <p>Choose how the personnel portal opens and displays.</p>
+      </div>
+    </div>
+    <div class="settings-fields">
+      <label class="field-row" for="landing-page">
+        <span><strong>After sign-in</strong><small>Choose your first page</small></span>
+        <select id="landing-page" name="landingPage" [(ngModel)]="preferences.defaultLandingPage">
+          <option value="dashboard">Dashboard</option>
+          <option value="residents">Residents</option>
+          <option value="concerns">Concerns</option>
+        </select>
+      </label>
+      <label class="field-row" for="compact-layout">
+        <span><strong>Compact layout</strong><small>Reduce spacing in the sidebar and header</small></span>
+        <input id="compact-layout" name="compactLayout" type="checkbox" [(ngModel)]="preferences.compactLayout">
+      </label>
+    </div>
+  </section>
+
+  <section class="settings-section notification-section">
+    <div class="section-heading">
+      <div>
+        <h2>Notifications</h2>
+        <p>Control the notification bell and demo delivery preferences.</p>
+      </div>
+    </div>
+    <div class="settings-fields">
+      <label class="field-row" for="in-app-notifications">
+        <span><strong>In-app notifications</strong><small>Show alerts in the top-bar bell</small></span>
+        <input id="in-app-notifications" name="inAppNotifications" type="checkbox" [(ngModel)]="preferences.notifications.inApp">
+      </label>
+      <label class="field-row" for="email-updates">
+        <span><strong>Email updates</strong><small>Preference only; this frontend does not send email</small></span>
+        <input id="email-updates" name="emailUpdates" type="checkbox" [(ngModel)]="preferences.notifications.emailUpdates">
+      </label>
+      <label class="field-row" for="daily-digest">
+        <span><strong>Daily digest</strong><small>Preference only; no scheduled messages are sent</small></span>
+        <input id="daily-digest" name="dailyDigest" type="checkbox" [(ngModel)]="preferences.notifications.dailyDigest">
+      </label>
+    </div>
+  </section>
+
+  <section class="settings-section security-section">
+    <div class="section-heading">
+      <div>
+        <h2>Change password</h2>
+        <p>Password changes apply only until you reload this browser demo.</p>
+      </div>
+    </div>
+    <form class="password-form" (ngSubmit)="changePassword()">
+      <label>
+        <span>Current password</span>
+        <input name="currentPassword" type="password" [(ngModel)]="currentPassword" autocomplete="current-password" required>
+      </label>
+      <label>
+        <span>New password</span>
+        <input name="newPassword" type="password" [(ngModel)]="newPassword" autocomplete="new-password" minlength="6" required>
+      </label>
+      <label>
+        <span>Confirm new password</span>
+        <input name="confirmPassword" type="password" [(ngModel)]="confirmPassword" autocomplete="new-password" required>
+      </label>
+      <p class="form-message error" *ngIf="passwordError" role="alert">{{ passwordError }}</p>
+      <p class="form-message success" *ngIf="passwordMessage" role="status">{{ passwordMessage }}</p>
+      <button class="secondary-btn" type="submit">Update password</button>
+    </form>
+  </section>
+
+  <section class="settings-section about-section">
+    <div>
+      <h2>About BarangayAssist</h2>
+      <p>Authorized personnel portal · Version 1.0 · Frontend demo with browser-local sample data.</p>
+    </div>
+  </section>
+
+  <footer class="settings-actions">
+    <p role="status" *ngIf="preferenceMessage">{{ preferenceMessage }}</p>
+    <button class="reset-btn" type="button" (click)="resetPreferences()">Restore defaults</button>
+    <button class="primary-btn" type="button" (click)="savePreferences()">Save preferences</button>
+  </footer>
+</div>

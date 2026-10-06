@@ -1,0 +1,99 @@
+<section class="page-header">
+  <div>
+    <p class="section-kicker">Overview</p>
+    <h1>Barangay Dashboard</h1>
+  </div>
+  <button class="primary-btn" type="button">Generate Report</button>
+</section>
+
+<div class="metrics-grid">
+  <article *ngFor="let metric of metrics" [class]="getToneClass(metric.tone)">
+    <div class="metric-top">
+      <span class="metric-label">{{ metric.label }}</span>
+      <span class="metric-icon">↗</span>
+    </div>
+    <div class="metric-value">{{ metric.value }}</div>
+    <div class="metric-detail">{{ metric.detail }}</div>
+  </article>
+</div>
+
+<div class="two-column-layout">
+  <section class="panel">
+    <div class="panel-header">
+      <h3>Residents by Purok</h3>
+      <span class="panel-badge">Snapshot</span>
+    </div>
+
+    <div class="bar-chart">
+      <div class="bar-row" *ngFor="let purok of puroks">
+        <div class="bar-label">
+          <span>{{ purok.name }}</span>
+          <small>{{ purok.residents }} residents</small>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill" [style.width.%]="(purok.residents / 80) * 100"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-header">
+      <h3>Recent Activity</h3>
+      <span class="panel-badge">Live</span>
+    </div>
+
+    <ul class="activity-list">
+      <li *ngFor="let item of recentActivity">
+        <div class="activity-dot"></div>
+        <div>
+          <strong>{{ item.title }}</strong>
+          <p>{{ item.time }}</p>
+        </div>
+        <small>{{ item.detail }}</small>
+      </li>
+    </ul>
+  </section>
+</div>
+
+<div class="bottom-grid">
+  <section class="panel">
+    <div class="panel-header">
+      <h3>Service Overview</h3>
+      <span class="panel-badge">Status</span>
+    </div>
+
+    <div class="status-grid">
+      <div class="status-item">
+        <span class="status-label">Pending</span>
+        <strong>35</strong>
+      </div>
+      <div class="status-item success">
+        <span class="status-label">Resolved</span>
+        <strong>40</strong>
+      </div>
+      <div class="status-item warning">
+        <span class="status-label">Processing</span>
+        <strong>12</strong>
+      </div>
+      <div class="status-item info">
+        <span class="status-label">Published</span>
+        <strong>6</strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-header">
+      <h3>Quick Access</h3>
+      <span class="panel-badge">Items</span>
+    </div>
+
+    <div class="quick-actions">
+      <button type="button">Add Resident</button>
+      <button type="button">New Concern</button>
+      <button type="button">Request Review</button>
+      <button type="button">Publish Announcement</button>
+    </div>
+  </section>
+</div>
